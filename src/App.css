@@ -1,0 +1,62 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Header */
+.header {
+  width: 100vw;
+  border-bottom: solid 1px rgb(222, 222, 222);
+}
+
+.logo-search {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
+
+.top-menu {
+  /* border: solid 1px red; */
+  display: flex;
+  gap: 10px;
+}
+
+/* menu principal */
+.nav {
+  /* border: solid 1px green; */
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  width: 750px;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 50px;
+  gap: 30px;
+}
+
+/* banière du site vinted */
+
+.banner img {
+  width: 100vw;
+  height: 500px;
+  object-fit: cover;
+}
+
+/* Titre Articles populaires */
+.popular-title {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+}
+
+/* Offre */
+.offer {
+  border: solid 1px red;
+}
