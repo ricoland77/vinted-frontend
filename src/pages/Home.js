@@ -13,7 +13,7 @@ const Home = () => {
         const response = await axios.get(
           "https://lereacteur-vinted-api.herokuapp.com/offers"
         );
-        console.log(response.data);
+        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -53,18 +53,16 @@ const Home = () => {
       </div>
 
       {/* recupération des annonces en BDD */}
-      <div>
+      <div className="all-offers">
         {data.offers.map((offer) => {
-          console.log(data.offers);
+          // console.log(data.offers);
           return (
-            <div className="offer">
-              {offer.product_pictures.map((image) => {
-                // console.log(offer.product_pictures);
-                return <img src={offer.product_pictures.url} alt="" />;
-              })}
+            <div key={offer._id} className="offer">
+              <Link to={`/offer/${offer._id}`}>
+                <img src={offer.product_image.url} alt="" />
+              </Link>
               <p>{offer.product_price} €</p>
               <p>{offer.product_name}</p>
-              {/* <img src={offer.product_pictures.url} alt="" /> */}
             </div>
           );
         })}
@@ -72,7 +70,7 @@ const Home = () => {
 
       {/* // */}
       <p>je suis sur la page home</p>
-      <Link to="/offer">aller à la page offer</Link>
+      <Link to="/offer/:id">aller à la page offer</Link>
     </div>
   );
 };

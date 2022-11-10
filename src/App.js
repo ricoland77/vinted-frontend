@@ -1,8 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// import de mes pages
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Header from "./pages/Header";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -10,8 +13,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/header" element={<Header />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Home />} />
-        <Route path="/offer" element={<Offer />} />
+        <Route path="/offer/:id" element={<Offer />} />
       </Routes>
     </Router>
   );
