@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Signup = ({ handleToken }) => {
+const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -57,8 +57,8 @@ const Signup = ({ handleToken }) => {
           </div>{" "}
           <p className="Conditions">
             En m'inscrivant, je confirme avoir lu et accepté les Termes &
-            Conditions et Politique de Confidentialité de Vinted. Je confirme
-            avoir au moins 18 ans.
+            Conditions et Politique de Confidentialité de Vinted. <br /> Je
+            confirme avoir au moins 18 ans.
           </p>
           <button
             className="inscription"
@@ -75,9 +75,13 @@ const Signup = ({ handleToken }) => {
 
               try {
                 const response = await axios.post(
-                  "https://lereacteur-vinted-api.herokuapp.com/user/signup"
+                  "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+                  form
                 );
-                console.log(response.data);
+                // console.log(response.data);
+                const token = response.data.token;
+                Cookies.set("token", token, { expires: 7 });
+                Cookies.get("token");
               } catch (error) {
                 console.log(error.message);
               }
