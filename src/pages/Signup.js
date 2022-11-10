@@ -4,24 +4,26 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Signup = ({ handleToken }) => {
-  const [text, setText] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [newsletter, setNewsletter] = useState(false);
   const navigate = useNavigate();
 
   return (
     <div className="signup-page">
       <div className="signup">
         {/* formulaire */}
-        <form className="signup-form">
+
+        <form action="submit" className="signup-form">
           <h2>S’inscrire</h2>
           <input
             className="signup-input"
             type="text"
-            value={text}
+            value={username}
             placeholder="Nom d'utilisateur"
             onChange={(event) => {
-              setText(event.target.value);
+              setUsername(event.target.value);
             }}
           />
           <input
@@ -44,7 +46,13 @@ const Signup = ({ handleToken }) => {
           />
           {/* newsletter */}
           <div className="check-newsletter">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value={newsletter}
+              onChange={(event) => {
+                setNewsletter(event.target.checked);
+              }}
+            />
             <p>S'inscrire à notre newsletter</p>
           </div>{" "}
           <p className="Conditions">
@@ -54,20 +62,25 @@ const Signup = ({ handleToken }) => {
           </p>
           <button
             className="inscription"
-            onClick={() => {
-              const fetchData = async () => {
-                try {
-                  const response = await axios.post(
-                    "https://lereacteur-vinted-api.herokuapp.com/user/signup"
-                  );
-                  //   console.log(response.data);
-                } catch (error) {
-                  console.log(error.message);
-                }
-                const token = "1234567";
-                handleToken(token);
+            onClick={async (event) => {
+              event.preventDefault();
+              //   console.log("fdslfsd");
+
+              const form = {
+                username: username,
+                email: email,
+                password: password,
+                newsletter: newsletter,
               };
-              fetchData();
+
+              try {
+                const response = await axios.post(
+                  "https://lereacteur-vinted-api.herokuapp.com/user/signup"
+                );
+                console.log(response.data);
+              } catch (error) {
+                console.log(error.message);
+              }
             }}
           >
             S'inscrire
