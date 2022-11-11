@@ -57,12 +57,14 @@ const Home = () => {
         {data.offers.map((offer) => {
           // console.log(data.offers);
           return (
-            <div key={offer._id} className="offer">
-              <Link to={`/offer/${offer._id}`}>
-                <img src={offer.product_image.url} alt="" />
-              </Link>
-              <p>{offer.product_price} €</p>
-              <p>{offer.product_name}</p>
+            <div className="container">
+              <div key={offer._id} className="offer">
+                <Link to={`/offer/${offer._id}`}>
+                  <img src={offer.product_image.url} alt="" />
+                </Link>
+                <p>{offer.product_price} €</p>
+                <p>{offer.product_name}</p>
+              </div>
             </div>
           );
         })}

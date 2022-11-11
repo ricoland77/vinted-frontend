@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -41,6 +41,7 @@ const Login = () => {
               try {
                 event.preventDefault();
                 setErrorMessage("");
+
                 const response = await axios.post(
                   "https://site--backend-vinted--kq885dbc6xpm.code.run/user/login",
                   {
@@ -49,17 +50,16 @@ const Login = () => {
                   }
                 );
                 // console.log(response.data);
-                const token = response.data.token;
-                Cookies.set("token", token, { expires: 7 });
-                Cookies.get("token");
+                if (response.data.token) {
+                  // console.log(response.data.token);
+                  handleToken(response.data.token);
+                  navigate("/");
+                }
 
                 if (!email || !password) {
                   setErrorMessage("Veuillez remplir tous les champs");
                 } else {
-                  navigate("/");
                 }
-
-                // navigate("/");
               } catch (error) {
                 console.log(error.response.status);
               }

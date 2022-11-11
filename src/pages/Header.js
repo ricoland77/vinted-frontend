@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import vinted from "../assets/images/vinted.svg";
 
-const Header = ({ token }) => {
+const Header = ({ token, handleToken }) => {
   return (
-    <div className="header">
+    <header className="header">
       <div className="container">
         <div className="logo-search">
           <Link to="/">
@@ -11,25 +11,27 @@ const Header = ({ token }) => {
           </Link>
           <input type="search" placeholder="rechercher des articles" />
         </div>
-
-        <div className="top-menu">
-          {token ? (
-            <button>Deconnexion</button>
-          ) : (
-            <>
-              <Link to="/signup">
-                <button>s'inscrire</button>
-              </Link>
-              <Link to="/login">
-                <button>se connecter</button>
-              </Link>
-            </>
-          )}
-
-          <button>vends tes articles</button>
-        </div>
+        {token ? (
+          <button
+            onClick={() => {
+              handleToken(null);
+            }}
+          >
+            Déconnexion
+          </button>
+        ) : (
+          <div className="top-menu">
+            <Link to="/signup">
+              <button>s'inscrire</button>
+            </Link>
+            <Link to="/login">
+              <button>se connecter</button>
+            </Link>
+            {/* <button>vends tes articles</button> */}
+          </div>
+        )}
       </div>
-    </div>
+    </header>
   );
 };
 
