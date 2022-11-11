@@ -46,7 +46,6 @@ const Offer = () => {
             </div>
           );
         })}
-        <Link to="/">Retour à la page d'accueil</Link>
       </div>
     </div>
   );

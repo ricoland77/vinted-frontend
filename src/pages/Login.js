@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -58,7 +57,6 @@ const Login = ({ handleToken }) => {
 
                 if (!email || !password) {
                   setErrorMessage("Veuillez remplir tous les champs");
-                } else {
                 }
               } catch (error) {
                 console.log(error.response.status);

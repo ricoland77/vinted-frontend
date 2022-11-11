@@ -1,10 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useSearchParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -19,7 +14,6 @@ import Cookies from "js-cookie";
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
 
-  console.log(token);
   const handleToken = (token) => {
     if (token) {
       setToken(token);
@@ -34,7 +28,7 @@ function App() {
     <Router>
       <Header token={token} handleToken={handleToken} />
       <Routes>
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route path="/" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />

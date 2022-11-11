@@ -1,18 +1,18 @@
-import Cookies from "js-cookie";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Signup = () => {
+const Signup = ({ handleToken }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   const handleClick = async (event) => {
     event.preventDefault();
-    //   console.log("fdslfsd");
 
     try {
       const response = await axios.post(
@@ -25,10 +25,15 @@ const Signup = () => {
         }
       );
       // console.log(response.data);
-      const token = response.data.token;
-      Cookies.set("token", token, { expires: 7 });
-      Cookies.get("token");
-      navigate("/");
+      if (response.data.token) {
+        // console.log(response.data.token);
+        handleToken(response.data.token);
+        navigate("/");
+      }
+
+      if (!email || !password) {
+        setErrorMessage("Veuillez remplir tous les champs");
+      }
     } catch (error) {
       console.log(error.message);
     }
