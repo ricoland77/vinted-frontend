@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
@@ -9,6 +9,30 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
   const navigate = useNavigate();
+
+  const handleClick = async (event) => {
+    event.preventDefault();
+    //   console.log("fdslfsd");
+
+    try {
+      const response = await axios.post(
+        "https://site--backend-vinted--kq885dbc6xpm.code.run/user/signup",
+        {
+          username: username,
+          email: email,
+          password: password,
+          newsletter: newsletter,
+        }
+      );
+      // console.log(response.data);
+      const token = response.data.token;
+      Cookies.set("token", token, { expires: 7 });
+      Cookies.get("token");
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="signup-page">
@@ -48,47 +72,26 @@ const Signup = () => {
           <div className="check-newsletter">
             <input
               type="checkbox"
-              value={newsletter}
-              onChange={(event) => {
-                setNewsletter(event.target.checked);
+              checked={newsletter}
+              onChange={() => {
+                setNewsletter(!newsletter);
               }}
             />
             <p>S'inscrire à notre newsletter</p>
-          </div>{" "}
+          </div>
           <p className="Conditions">
             En m'inscrivant, je confirme avoir lu et accepté les Termes &
             Conditions et Politique de Confidentialité de Vinted. <br /> Je
             confirme avoir au moins 18 ans.
           </p>
-          <button
-            className="inscription"
-            onClick={async (event) => {
-              event.preventDefault();
-              //   console.log("fdslfsd");
-
-              const form = {
-                username: username,
-                email: email,
-                password: password,
-                newsletter: newsletter,
-              };
-
-              try {
-                const response = await axios.post(
-                  "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-                  form
-                );
-                // console.log(response.data);
-                const token = response.data.token;
-                Cookies.set("token", token, { expires: 7 });
-                Cookies.get("token");
-              } catch (error) {
-                console.log(error.message);
-              }
-            }}
-          >
+          <button className="inscription" onClick={handleClick}>
             S'inscrire
           </button>
+          <div className="ever-count">
+            <Link to="/login">
+              <p>Tu as déjà un compte ? connecte-toi !</p>
+            </Link>
+          </div>
         </form>
       </div>
     </div>

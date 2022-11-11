@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import vinted from "../assets/images/vinted.svg";
 
-const Header = () => {
+const Header = ({ token }) => {
   return (
     <div className="header">
       <div className="container">
@@ -13,11 +13,19 @@ const Header = () => {
         </div>
 
         <div className="top-menu">
-          <Link to="/signup">
-            <button>s'inscrire</button>
-          </Link>
+          {token ? (
+            <button>Deconnexion</button>
+          ) : (
+            <>
+              <Link to="/signup">
+                <button>s'inscrire</button>
+              </Link>
+              <Link to="/login">
+                <button>se connecter</button>
+              </Link>
+            </>
+          )}
 
-          <button>se connecter</button>
           <button>vends tes articles</button>
         </div>
       </div>

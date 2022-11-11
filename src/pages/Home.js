@@ -11,7 +11,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          "https://site--backend-vinted--kq885dbc6xpm.code.run/offers"
         );
         // console.log(response.data);
         setData(response.data);
