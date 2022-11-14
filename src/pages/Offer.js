@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -14,13 +13,13 @@ const Offer = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--backend-vinted--kq885dbc6xpm.code.run/offer/${id}`
+          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
+        console.log(error.response);
       }
     };
     fetchData();

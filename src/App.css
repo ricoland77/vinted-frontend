@@ -5,9 +5,9 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
+  /* display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; */
 }
 
 h2 {
@@ -30,7 +30,9 @@ h2 {
 .top-menu {
   /* border: solid 1px red; */
   display: flex;
-  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
 }
 
 /* menu principal */
@@ -55,6 +57,40 @@ h2 {
 
 /* banière du site vinted */
 
+.banner {
+  position: relative;
+}
+.encart {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 350px;
+  height: 200px;
+  border-radius: 5px;
+  padding-left: 20px;
+  position: absolute;
+  top: 250px;
+}
+
+.encart p {
+  font-size: 35px;
+  font-weight: 100;
+  margin-bottom: 30px;
+}
+
+.buttom-by {
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  background-color: #007782;
+  border: none;
+  width: 85%;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .banner img {
   width: 100vw;
   height: 500px;
@@ -73,14 +109,14 @@ h2 {
   /* border: solid 3px maroon; */
   display: flex;
   justify-content: space-between;
-  overflow-x: scroll;
-  flex-shrink: 0;
+  align-items: flex-start;
+  flex-wrap: wrap;
   box-sizing: border-box;
-  gap: 10px;
 }
 
 .offer {
   width: 210px;
+  margin-bottom: 40px;
   /* border: solid 1px green; */
 }
 
@@ -194,4 +230,42 @@ h2 {
 
 .login-form h2 {
   margin: 20px;
+}
+
+/* page publish */
+
+.files {
+  background-color: white;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.publish {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+}
+
+.title-publish {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(225, 225, 225);
+  padding: 20px;
+}
+
+.title-publish p {
+  font-size: 14px;
+}
+
+.input-publish {
+  width: 50vw;
+  border: none;
+  border-bottom: solid 1px rgb(225, 225, 225);
 }

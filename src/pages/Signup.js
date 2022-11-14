@@ -16,7 +16,7 @@ const Signup = ({ handleToken }) => {
 
     try {
       const response = await axios.post(
-        "https://site--backend-vinted--kq885dbc6xpm.code.run/user/signup",
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         {
           username: username,
           email: email,
@@ -24,7 +24,8 @@ const Signup = ({ handleToken }) => {
           newsletter: newsletter,
         }
       );
-      // console.log(response.data);
+      console.log(response.data);
+
       if (response.data.token) {
         // console.log(response.data.token);
         handleToken(response.data.token);

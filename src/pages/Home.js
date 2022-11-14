@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import banner from "../assets/images/banner.jpg";
 
-const Home = () => {
+const Home = (search) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -11,7 +11,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://site--backend-vinted--kq885dbc6xpm.code.run/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -21,7 +21,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [search]);
 
   return isLoading ? (
     <p>Loading…</p>
@@ -46,6 +46,12 @@ const Home = () => {
       <div className="banner">
         <img src={banner} alt="banière du site Vinted" />
       </div>
+      <div className="encart">
+        <p>Prêts à faire du tri dans vos placards ?</p>
+        <Link to="/publish">
+          <button className="buttom-by">Commencer à vendre</button>
+        </Link>
+      </div>
 
       <div className="popular-title">
         <h2>Articles populaires</h2>
@@ -69,10 +75,6 @@ const Home = () => {
           );
         })}
       </div>
-
-      {/* // */}
-      <p>je suis sur la page home</p>
-      <Link to="/offer/:id">aller à la page offer</Link>
     </div>
   );
 };
