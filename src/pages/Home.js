@@ -17,10 +17,12 @@ const Home = ({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // console.log(priceMin);
+
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -30,7 +32,7 @@ const Home = ({
       }
     };
     fetchData();
-  }, [search]);
+  }, [search, priceMin, priceMax, sort]);
 
   return isLoading ? (
     <p>Loading…</p>
@@ -72,8 +74,8 @@ const Home = ({
         {data.offers.map((offer) => {
           // console.log(data.offers);
           return (
-            <div className="container">
-              <div key={offer._id} className="offer">
+            <div key={offer._id} className="container">
+              <div className="offer">
                 <Link to={`/offer/${offer._id}`}>
                   <img src={offer.product_image.url} alt="" />
                 </Link>

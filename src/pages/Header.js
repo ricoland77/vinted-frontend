@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import vinted from "../assets/images/vinted.svg";
-import { Range } from "react-range";
 
 const Header = ({
   token,
@@ -70,7 +69,15 @@ const Header = ({
             value={priceMin}
             placeholder="Prix mini"
             onChange={(event) => {
-              setPriceMin(event.target.priceMin);
+              setPriceMin(event.target.value);
+            }}
+          />
+          <input
+            type="text"
+            value={priceMax}
+            placeholder="Prix max"
+            onChange={(event) => {
+              setPriceMax(event.target.value);
             }}
           />
         </div>

@@ -14,12 +14,13 @@ const CheckoutForm = ({ token, title, price }) => {
     setIsLoading(true);
 
     try {
-      const CardElement = elements.getElement(CardElement);
-      const stripeResponse = await stripe.createToken(CardElement, {
-        name: token, //"id acheteur",
+      const cardElement = elements.getElement(CardElement);
+      const stripeResponse = await stripe.createToken(cardElement, {
+        name: token,
       });
-      //   console.log(stripeResponse);
+      console.log(stripeResponse);
       const stripeToken = stripeResponse.token.id;
+
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/payment",
         {
@@ -28,7 +29,11 @@ const CheckoutForm = ({ token, title, price }) => {
           amount: price,
         }
       );
-      //   console.log(response.data);
+
+      console.log(response.data);
+      if (response.data.status === "succeeded") {
+        setCompleted(true);
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -44,15 +49,19 @@ const CheckoutForm = ({ token, title, price }) => {
       </div>
       <p>Total {price + 0.59 + 1.18}</p>
       <p>
-        Il ne vous reste plus qu'une étape pour vous offrir {title}. Vous alle
+        Il ne vous reste plus qu'une étape pour vous offrir {title}. Vous allez
         payer {price + 0.59 + 1.18} (frais de protection et frais de port
         inclus).
       </p>
       <div className="card">
-        <form onSubmit={handleSubmit}>
-          <CardElement />
-          <input type="submit" />
-        </form>
+        {!completed ? (
+          <form onSubmit={handleSubmit}>
+            <CardElement />
+            <button type="submit">Valider</button>
+          </form>
+        ) : (
+          <span>Paiement effectué ! </span>
+        )}
       </div>
     </div>
   );
