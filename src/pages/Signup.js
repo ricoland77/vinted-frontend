@@ -36,7 +36,7 @@ const Signup = ({ handleToken }) => {
         setErrorMessage("Veuillez remplir tous les champs");
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response);
     }
   };
 

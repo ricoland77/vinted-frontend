@@ -42,7 +42,7 @@ const Login = ({ handleToken }) => {
                 setErrorMessage("");
 
                 const response = await axios.post(
-                  " https://lereacteur-vinted-api.herokuapp.com/user/login",
+                  "https://lereacteur-vinted-api.herokuapp.com/user/login",
                   {
                     email: email,
                     password: password,
@@ -52,14 +52,15 @@ const Login = ({ handleToken }) => {
                 if (response.data.token) {
                   // console.log(response.data.token);
                   handleToken(response.data.token);
-                  navigate("/");
+                  navigate("/publish");
                 }
 
                 if (!email || !password) {
                   setErrorMessage("Veuillez remplir tous les champs");
                 }
               } catch (error) {
-                console.log(error.response.status);
+                // console.log(error.response.status);
+                console.log(error.response);
               }
             }}
           >

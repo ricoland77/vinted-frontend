@@ -3,7 +3,16 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import banner from "../assets/images/banner.jpg";
 
-const Home = (search) => {
+const Home = ({
+  search,
+  setSearch,
+  priceMin,
+  setPriceMin,
+  priceMax,
+  setPriceMax,
+  sort,
+  setSort,
+}) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -11,7 +20,7 @@ const Home = (search) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -68,8 +77,8 @@ const Home = (search) => {
                 <Link to={`/offer/${offer._id}`}>
                   <img src={offer.product_image.url} alt="" />
                 </Link>
-                <p>{offer.product_price} €</p>
-                <p>{offer.product_name}</p>
+                <p className="price-offer">{offer.product_price} €</p>
+                <p className="name-offer">{offer.product_name}</p>
               </div>
             </div>
           );

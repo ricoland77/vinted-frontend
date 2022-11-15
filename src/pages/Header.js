@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
 import vinted from "../assets/images/vinted.svg";
+import { Range } from "react-range";
 
-const Header = ({ token, handleToken, search, setSearch }) => {
+const Header = ({
+  token,
+  handleToken,
+  search,
+  setSearch,
+  priceMin,
+  setPriceMin,
+  priceMax,
+  setPriceMax,
+  sort,
+  setSort,
+}) => {
   return (
     <header className="header">
       <div className="container">
@@ -38,6 +50,29 @@ const Header = ({ token, handleToken, search, setSearch }) => {
               {/* <button>vends tes articles</button> */}
             </div>
           )}
+          <Link to={token ? "/publish" : "/login"}>
+            <button>Vends tes articles</button>
+          </Link>
+        </div>
+        <div>
+          <button
+            type="text"
+            value={sort}
+            onChange={(event) => {
+              setSort(event.target.value);
+            }}
+          >
+            Prix ⇡
+          </button>
+
+          <input
+            type="text"
+            value={priceMin}
+            placeholder="Prix mini"
+            onChange={(event) => {
+              setPriceMin(event.target.priceMin);
+            }}
+          />
         </div>
       </div>
     </header>

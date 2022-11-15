@@ -11,10 +11,16 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Cookies from "js-cookie";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [search, setSearch] = useState("");
+  const [priceMin, setPriceMin] = useState("");
+  const [priceMax, setPriceMax] = useState("");
+  const [sort, setSort] = useState("");
+  const [page, setPage] = useState("");
+  const [limit, setLimit] = useState("");
 
   const handleToken = (token) => {
     if (token) {
@@ -39,10 +45,35 @@ function App() {
         <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route
           path="/"
-          element={<Home search={search} setSearch={setSearch} />}
+          element={
+            <Home
+              search={search}
+              setSearch={setSearch}
+              priceMin={priceMin}
+              setPriceMin={setPriceMin}
+              priceMax={priceMax}
+              setPriceMax={setPriceMax}
+              sort={sort}
+              setSort={setSort}
+              page={page}
+              setPage={setPage}
+              limit={limit}
+              setLimit={setLimit}
+            />
+          }
         />
         <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/publish" element={<Publish />} />
+        <Route
+          path="/publish"
+          element={
+            token ? (
+              <Publish token={token} />
+            ) : (
+              <Login handleToken={handleToken} />
+            )
+          }
+        />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );
