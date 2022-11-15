@@ -73,7 +73,7 @@ function App() {
             )
           }
         />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment" element={<Payment token={token} />} />
       </Routes>
     </Router>
   );
