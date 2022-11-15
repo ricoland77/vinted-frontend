@@ -11,7 +11,7 @@ const Payment = ({ token }) => {
   const location = useLocation();
   const { title, price } = location.state;
   return (
-    <div style={{ background: "red" }}>
+    <div>
       <Elements stripe={stripePromise}>
         <CheckoutForm token={token} title={title} price={price} />
       </Elements>
