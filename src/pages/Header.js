@@ -22,6 +22,7 @@ const Header = ({
               <img src={vinted} alt="logo Vinted" />
             </Link>
             <input
+              className="btnSearch"
               value={search}
               type="search"
               placeholder="rechercher des articles"
@@ -32,6 +33,7 @@ const Header = ({
           </div>
           {token ? (
             <button
+              className="btnDeconnexion"
               onClick={() => {
                 handleToken(null);
               }}
@@ -41,19 +43,19 @@ const Header = ({
           ) : (
             <div className="top-menu">
               <Link to="/signup">
-                <button>s'inscrire</button>
+                <button className="btnInscrire">s'inscrire</button>
               </Link>
               <Link to="/login">
-                <button>se connecter</button>
+                <button className="btnInscrire">se connecter</button>
               </Link>
               {/* <button>vends tes articles</button> */}
             </div>
           )}
           <Link to={token ? "/publish" : "/login"}>
-            <button>Vends tes articles</button>
+            <button className="btnVend">Vends tes articles</button>
           </Link>
         </div>
-        <div>
+        {/* <div>
           <button
             type="text"
             value={sort}
@@ -80,7 +82,7 @@ const Header = ({
               setPriceMax(event.target.value);
             }}
           />
-        </div>
+        </div> */}
       </div>
     </header>
   );

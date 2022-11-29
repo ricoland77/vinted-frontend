@@ -20,6 +20,10 @@ h2 {
   border-bottom: solid 1px rgb(222, 222, 222);
 }
 
+.btnSearch {
+  width: 200px;
+}
+
 .logo-search {
   display: flex;
   justify-content: flex-start;
@@ -30,16 +34,76 @@ h2 {
 .top-menu {
   /* border: solid 1px red; */
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 40px;
+  gap: 70px;
+}
+
+.btnInscrire {
+  border: solid 1px #007782;
+  background-color: white;
+  color: #007782;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.btnDeconnexion {
+  border: none;
+  background-color: #007782;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.btnVend {
+  border: none;
+  color: white;
+  background-color: #007782;
+  padding: 5px 10px;
+  border-radius: 3px;
 }
 
 /* menu principal */
-.nav {
+.filters {
   /* border: solid 1px green; */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+}
+
+.filters-price-up-Down {
+  display: flex;
+  gap: 20px;
+}
+
+.filters-price-up-Down button {
+  border: solid 1px #007782;
+  background-color: white;
+  color: #007782;
+  padding: 3px 10px;
+  border-radius: 3px;
+}
+
+.filters-price {
+  /* border: solid 1px yellow; */
+  display: flex;
+  gap: 10px;
+}
+
+.filters-input {
+  width: 50px;
+  border: solid 1px #007782;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.nav {
   height: 40px;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -59,6 +123,8 @@ h2 {
 
 .banner {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 .encart {
   background-color: white;
@@ -108,16 +174,15 @@ h2 {
 .all-offers {
   /* border: solid 3px maroon; */
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-wrap: wrap;
   box-sizing: border-box;
+  gap: 10px;
 }
 
 .offer {
-  width: 200px;
-  margin-bottom: 40px;
   /* border: solid 1px green; */
+  width: 201px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -342,4 +407,74 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* page payment */
+.container-payment {
+  height: 100vh;
+  background-color: rgb(235, 235, 235);
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.total-payment {
+  /* border: solid black 1px; */
+  background-color: white;
+  width: 550px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.text-resume {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: rgb(175, 175, 175);
+  margin-top: 10px;
+}
+
+.total-resume {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  border-top: solid 1px lightgray;
+  padding-top: 50px;
+}
+
+.total-resume p {
+  font-weight: 600;
+}
+
+.title-resume-pay {
+  font-size: 14px;
+  color: lightgrey;
+  margin-bottom: 30px;
+}
+
+.total-text {
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 60px;
+}
+
+.total-text span {
+  font-weight: 600;
+}
+
+.card {
+  border: solid 1px lightgray;
+  margin: 60px 0px 30px 0px;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.buttom-pay {
+  color: white;
+  background-color: #00c06d;
+  border: none;
+  width: 100%;
+  padding: 10px;
 }

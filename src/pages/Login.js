@@ -52,7 +52,7 @@ const Login = ({ handleToken }) => {
                 if (response.data.token) {
                   // console.log(response.data.token);
                   handleToken(response.data.token);
-                  navigate("/publish");
+                  navigate("/");
                 }
 
                 if (!email || !password) {

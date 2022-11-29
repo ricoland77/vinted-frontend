@@ -40,28 +40,46 @@ const CheckoutForm = ({ token, title, price }) => {
   };
 
   return (
-    <div>
-      <p>Résumé de la commande</p>
-      <div>
-        <p>Commande {price}</p>
-        <p>Frais de protection acheteurs 0.59 €</p>
-        <p>Frais de port 1.18 €</p>
-      </div>
-      <p>Total {price + 0.59 + 1.18}</p>
-      <p>
-        Il ne vous reste plus qu'une étape pour vous offrir {title}. Vous allez
-        payer {price + 0.59 + 1.18} (frais de protection et frais de port
-        inclus).
-      </p>
-      <div className="card">
-        {!completed ? (
-          <form onSubmit={handleSubmit}>
-            <CardElement />
-            <button type="submit">Valider</button>
-          </form>
-        ) : (
-          <span>Paiement effectué ! </span>
-        )}
+    <div className="container-payment">
+      <div className="total-payment">
+        <p className="title-resume-pay">Résumé de la commande</p>
+        <div>
+          <div className="text-resume">
+            <p>Commande</p>
+            <p>{price} €</p>
+          </div>
+          <div className="text-resume">
+            <p>Frais de protection acheteurs</p>
+            <p>0.59 €</p>
+          </div>
+          <div className="text-resume">
+            <p>Frais de port</p>
+            <p>1.18 €</p>
+          </div>
+        </div>
+        <div className="total-resume">
+          <p className="total-page-payment">Total</p>
+          <p className="total-page-payment">{price + 0.59 + 1.18} €</p>
+        </div>
+
+        <p className="total-text">
+          Il ne vous reste plus qu'une étape pour vous offrir{" "}
+          <span>{title}</span>. Vous allez payer{" "}
+          <span>{price + 0.59 + 1.18} €</span> (frais de protection et frais de
+          port inclus).
+        </p>
+        <div className="card">
+          {!completed ? (
+            <form onSubmit={handleSubmit}>
+              <CardElement />
+            </form>
+          ) : (
+            <span>Paiement effectué ! </span>
+          )}
+        </div>
+        <button className="buttom-pay" type="submit">
+          Pay
+        </button>
       </div>
     </div>
   );
