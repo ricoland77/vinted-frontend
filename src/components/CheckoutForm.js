@@ -41,46 +41,48 @@ const CheckoutForm = ({ token, title, price }) => {
 
   return (
     <div className="container-payment">
-      <div className="total-payment">
-        <p className="title-resume-pay">Résumé de la commande</p>
-        <div>
-          <div className="text-resume">
-            <p>Commande</p>
-            <p>{price} €</p>
+      <form onSubmit={handleSubmit}>
+        <div className="total-payment">
+          <p className="title-resume-pay">Résumé de la commande</p>
+          <div>
+            <div className="text-resume">
+              <p>Commande</p>
+              <p>{price} €</p>
+            </div>
+            <div className="text-resume">
+              <p>Frais de protection acheteurs</p>
+              <p>0.59 €</p>
+            </div>
+            <div className="text-resume">
+              <p>Frais de port</p>
+              <p>1.18 €</p>
+            </div>
           </div>
-          <div className="text-resume">
-            <p>Frais de protection acheteurs</p>
-            <p>0.59 €</p>
+          <div className="total-resume">
+            <p className="total-page-payment">Total</p>
+            <p className="total-page-payment">{price + 0.59 + 1.18} €</p>
           </div>
-          <div className="text-resume">
-            <p>Frais de port</p>
-            <p>1.18 €</p>
-          </div>
-        </div>
-        <div className="total-resume">
-          <p className="total-page-payment">Total</p>
-          <p className="total-page-payment">{price + 0.59 + 1.18} €</p>
-        </div>
 
-        <p className="total-text">
-          Il ne vous reste plus qu'une étape pour vous offrir{" "}
-          <span>{title}</span>. Vous allez payer{" "}
-          <span>{price + 0.59 + 1.18} €</span> (frais de protection et frais de
-          port inclus).
-        </p>
-        <div className="card">
-          {!completed ? (
-            <form onSubmit={handleSubmit}>
-              <CardElement />
-            </form>
-          ) : (
-            <span>Paiement effectué ! </span>
-          )}
+          <p className="total-text">
+            Il ne vous reste plus qu'une étape pour vous offrir{" "}
+            <span>{title}</span>. Vous allez payer{" "}
+            <span>{price + 0.59 + 1.18} €</span> (frais de protection et frais
+            de port inclus).
+          </p>
+          <div className="card">
+            {!completed ? (
+              <p>
+                <CardElement />
+              </p>
+            ) : (
+              <span>Paiement effectué ! </span>
+            )}
+          </div>
+          <button className="buttom-pay" type="submit">
+            Pay
+          </button>
         </div>
-        <button className="buttom-pay" type="submit">
-          Pay
-        </button>
-      </div>
+      </form>
     </div>
   );
 };

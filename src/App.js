@@ -38,18 +38,7 @@ function App() {
 
   return (
     <Router>
-      <Header
-        token={token}
-        handleToken={handleToken}
-        search={search}
-        setSearch={setSearch}
-        priceMin={priceMin}
-        setPriceMin={setPriceMin}
-        priceMax={priceMax}
-        setPriceMax={setPriceMax}
-        sort={sort}
-        setSort={setSort}
-      />
+      <Header token={token} handleToken={handleToken} />
       <Routes>
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />

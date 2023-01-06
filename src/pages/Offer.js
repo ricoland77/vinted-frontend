@@ -31,25 +31,41 @@ const Offer = () => {
   return isLoading ? (
     <p>Loading…</p>
   ) : (
-    <div className="offer-details">
+    <div className="container-payment">
       <div className="all-offer">
         <img src={data.product_image.secure_url} alt="" />
         <div className="text-details">
           <p>{data.product_price} €</p>
-          {/* Je parcours product_details, à chaque tour je récupère le nom de la clef de l'objet du tour */}
+
           {data.product_details.map((detail, index) => {
             const objectKey = Object.keys(detail)[0];
-            //   console.log(objectKey);
+            // console.log("ok =>", data.owner.account.username);
             return (
-              <div key={index}>
-                {/* J'affiche la clef de l'objet */}
-                <span className="details">{objectKey} : </span>
-                {/* J'affivhe le contenu de la clef */}
-                <span className="details">{detail[objectKey]}</span>
-              </div>
+              <>
+                <div className="all-details" key={index}>
+                  <span className="details">{objectKey} : </span>
+                  <span className="response-details">{detail[objectKey]}</span>
+                </div>
+              </>
             );
           })}
+          <div className="details-name">
+            {data.product_name.length < 40
+              ? data.product_name
+              : data.product_name.slice(0, 40) + "..."}
+          </div>
+          <div className="details-description">
+            {data.product_description.length < 50
+              ? data.product_description
+              : data.product_description.slice(0, 50) + "..."}
+          </div>
+          <div className="avatar-details">
+            <img src={data.owner.account.avatar.secure_url} alt="" />
+            <p>{data.owner.account.username}</p>
+          </div>
+
           <button
+            className="buttom-acheter"
             onClick={() => {
               navigate("/payment", {
                 state: {

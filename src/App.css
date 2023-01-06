@@ -120,7 +120,6 @@ h2 {
 }
 
 /* banière du site vinted */
-
 .banner {
   position: relative;
   display: flex;
@@ -171,8 +170,98 @@ h2 {
 }
 
 /* Offres */
+.all-offer {
+  /* border: solid 2px pink; */
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+}
+
+.all-offer img {
+  width: 325px;
+  height: 425px;
+}
+
+.text-details {
+  /* border: solid 2px red; */
+  background-color: white;
+  width: 325px;
+  height: 425px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.text-details p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.all-details {
+  /* border: solid 2px lightcoral; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.details {
+  /* border: solid 2px green; */
+  flex: 1;
+  color: rgb(175, 175, 175);
+  font-size: 12px;
+}
+
+.response-details {
+  flex: 1;
+  /* border: solid 2px yellow; */
+  color: rgb(78, 77, 77);
+  font-size: 12px;
+  display: flex;
+}
+
+.avatar-details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.avatar-details p {
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 40px;
+}
+
+.avatar-details img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.details-name {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 60px;
+}
+
+.details-description {
+  color: rgb(78, 77, 77);
+
+  font-size: 12px;
+  margin: 10px 0px;
+}
+
+.buttom-acheter {
+  color: white;
+  background-color: #007782;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 30px;
+}
+
 .all-offers {
-  /* border: solid 3px maroon; */
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -201,7 +290,6 @@ h2 {
 }
 
 /* page de l'offre détaillée */
-
 .detail {
   height: 100vh;
   background-color: #eaedee;
@@ -477,4 +565,5 @@ h2 {
   border: none;
   width: 100%;
   padding: 10px;
+  border-radius: 4px;
 }

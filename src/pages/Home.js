@@ -43,8 +43,8 @@ const Home = ({
           <button
             type="text"
             value={sort}
-            onChange={(event) => {
-              setSort(event.target.value);
+            onClick={(event) => {
+              setSort("price-asc");
             }}
           >
             Prix ⇧
@@ -53,8 +53,8 @@ const Home = ({
           <button
             type="text"
             value={sort}
-            onChange={(event) => {
-              setSort(event.target.value);
+            onClick={(event) => {
+              setSort("price-desc");
             }}
           >
             Prix ⇩
