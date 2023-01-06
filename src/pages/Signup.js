@@ -7,7 +7,7 @@ const Signup = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 

@@ -7,7 +7,7 @@ const CheckoutForm = ({ token, title, price }) => {
   const elements = useElements();
 
   const [completed, setCompleted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

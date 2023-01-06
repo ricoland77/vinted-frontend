@@ -13,7 +13,7 @@ const Publish = ({ token }) => {
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [data, setData] = useState();
+  const [, setData] = useState();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
