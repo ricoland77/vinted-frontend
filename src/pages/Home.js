@@ -3,32 +3,20 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import banner from "../assets/images/banner.jpg";
 
-const Home = ({
-  search,
-  setSearch,
-  priceMin,
-  setPriceMin,
-  priceMax,
-  setPriceMax,
-  sort,
-  setSort,
-}) => {
+const Home = ({ search, priceMin, priceMax, sort }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // console.log(priceMin);
-
-    const fetchData = async () => {
+    const fetchData = async (req, res) => {
       try {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
         );
-        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
-        // console.log(error.message);
+        res.status(400).json(error.message);
       }
     };
     fetchData();
@@ -71,7 +59,6 @@ const Home = ({
         {/* recupération des annonces en BDD */}
         <div className="all-offers">
           {data.offers.map((offer) => {
-            // console.log(data.offers);
             return (
               <div key={offer._id} className="container">
                 <div className="offer">

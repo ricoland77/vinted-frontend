@@ -32,13 +32,24 @@ function App() {
     }
   };
 
-  // const handlePrice = (event) => {
-  //   setPriceMin(event.target.value);
-  // };
-
   return (
     <Router>
-      <Header token={token} handleToken={handleToken} />
+      <Header
+        token={token}
+        handleToken={handleToken}
+        search={search}
+        setSearch={setSearch}
+        priceMin={priceMin}
+        setPriceMin={setPriceMin}
+        priceMax={priceMax}
+        setPriceMax={setPriceMax}
+        sort={sort}
+        setSort={setSort}
+        page={page}
+        setPage={setPage}
+        limit={limit}
+        setLimit={setLimit}
+      />
       <Routes>
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />

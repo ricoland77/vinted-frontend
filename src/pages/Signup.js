@@ -27,7 +27,6 @@ const Signup = ({ handleToken }) => {
       console.log(response.data);
 
       if (response.data.token) {
-        // console.log(response.data.token);
         handleToken(response.data.token);
         navigate("/");
       }
@@ -44,7 +43,6 @@ const Signup = ({ handleToken }) => {
     <div className="signup-page">
       <div className="signup">
         {/* formulaire */}
-
         <form action="submit" className="signup-form">
           <h2>S’inscrire</h2>
           <input

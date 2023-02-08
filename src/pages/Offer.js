@@ -10,15 +10,12 @@ const Offer = () => {
 
   const { id } = useParams();
 
-  // console.log(id);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
-        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -39,7 +36,6 @@ const Offer = () => {
 
           {data.product_details.map((detail, index) => {
             const objectKey = Object.keys(detail)[0];
-            // console.log("ok =>", data.owner.account.username);
             return (
               <>
                 <div className="all-details" key={index}>

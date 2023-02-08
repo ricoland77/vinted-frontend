@@ -28,11 +28,6 @@ const Publish = ({ token }) => {
     formData.append("color", color);
     formData.append("picture", picture);
 
-    // console.log(formData);
-    // for (let pair of formData.entries()) {
-    //   console.log(pair[0] + ", " + pair[1]);
-    // }
-
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
@@ -75,7 +70,6 @@ const Publish = ({ token }) => {
                   type="file"
                   id="picture"
                   onChange={(event) => {
-                    // console.log(event.target.files[0]);
                     setPicture(event.target.files[0]);
                   }}
                 />
