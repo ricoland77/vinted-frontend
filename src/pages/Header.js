@@ -31,58 +31,78 @@ const Header = ({
               }}
             />
           </div>
-          {token ? (
+          <div className="all-buttons">
+            {token ? (
+              <button
+                className="btnDeconnexion"
+                onClick={() => {
+                  handleToken(null);
+                }}
+              >
+                Déconnexion
+              </button>
+            ) : (
+              <div className="btn-login-signup">
+                <Link to="/signup">
+                  <button className="btn-singup">s'inscrire</button>
+                </Link>
+                <Link to="/login">
+                  <button className="btn-login">se connecter</button>
+                </Link>
+              </div>
+            )}
+            <div>
+              <Link to={token ? "/publish" : "/login"}>
+                <button className="btnVend">Vends tes articles</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="filters">
+          <div className="filters-price-up-Down">
             <button
-              className="btnDeconnexion"
-              onClick={() => {
-                handleToken(null);
+              type="text"
+              value={sort}
+              onClick={(event) => {
+                setSort("price-asc");
               }}
             >
-              Déconnexion
+              Prix ⇧
             </button>
-          ) : (
-            <div className="top-menu">
-              <Link to="/signup">
-                <button className="btnInscrire">s'inscrire</button>
-              </Link>
-              <Link to="/login">
-                <button className="btnInscrire">se connecter</button>
-              </Link>
-              {/* <button>vends tes articles</button> */}
-            </div>
-          )}
-          <Link to={token ? "/publish" : "/login"}>
-            <button className="btnVend">Vends tes articles</button>
-          </Link>
-        </div>
-        {/* <div>
-          <button
-            type="text"
-            value={sort}
-            onChange={(event) => {
-              setSort(event.target.value);
-            }}
-          >
-            Prix ⇡
-          </button>
 
-          <input
-            type="text"
-            value={priceMin}
-            placeholder="Prix mini"
-            onChange={(event) => {
-              setPriceMin(event.target.value);
-            }}
-          />
-          <input
-            type="text"
-            value={priceMax}
-            placeholder="Prix max"
-            onChange={(event) => {
-              setPriceMax(event.target.value);
-            }}
-          />
-        </div> */}
+            <button
+              type="text"
+              value={sort}
+              onClick={(event) => {
+                setSort("price-desc");
+              }}
+            >
+              Prix ⇩
+            </button>
+          </div>
+
+          <div className="filters-price">
+            <input
+              className="filters-input"
+              type="text"
+              value={priceMin}
+              placeholder="prix mini"
+              onChange={(event) => {
+                setPriceMin(event.target.value);
+              }}
+            />
+            <input
+              className="filters-input"
+              type="text"
+              value={priceMax}
+              placeholder="prix max"
+              onChange={(event) => {
+                setPriceMax(event.target.value);
+              }}
+            />
+          </div>
+        </div>
       </div>
     </header>
   );

@@ -38,66 +38,19 @@ const Home = ({
     <p>Loading…</p>
   ) : (
     <div className="container">
-      <div className="filters">
-        <div className="filters-price-up-Down">
-          <button
-            type="text"
-            value={sort}
-            onClick={(event) => {
-              setSort("price-asc");
-            }}
-          >
-            Prix ⇧
-          </button>
-
-          <button
-            type="text"
-            value={sort}
-            onClick={(event) => {
-              setSort("price-desc");
-            }}
-          >
-            Prix ⇩
-          </button>
-        </div>
-
-        <div className="filters-price">
-          <input
-            className="filters-input"
-            type="text"
-            value={priceMin}
-            placeholder="prix mini"
-            onChange={(event) => {
-              setPriceMin(event.target.value);
-            }}
-          />
-          <input
-            className="filters-input"
-            type="text"
-            value={priceMax}
-            placeholder="prix max"
-            onChange={(event) => {
-              setPriceMax(event.target.value);
-            }}
-          />
-        </div>
-      </div>
-
       <div className="container">
-        <div>
-          <nav className="nav">
-            <ul className="menu">
-              <li>Femmes</li>
-              <li>Hommes</li>
-              <li>Enfants</li>
-              <li>Maison</li>
-              <li>Divertissement</li>
-              <li>Animaux</li>
-              <li>À propos</li>
-              <li>Notre plateforme</li>
-            </ul>
-          </nav>
-        </div>
+        <nav className="nav">
+          <ul className="menu">
+            <li>Femmes</li>
+            <li>Hommes</li>
+            <li>Enfants</li>
+            <li>Maison</li>
+            <li>Divertissement</li>
+            <li>Animaux</li>
+            <li>À propos</li>
+            <li>Notre plateforme</li>
+          </ul>
+        </nav>
 
         {/* bannière vinted */}
         <div className="banner">
